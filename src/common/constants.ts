@@ -51,6 +51,7 @@ export const DEFAULT_ANNOTATION_VIEWER_OPTIONS = {
     max: 10,
     defaultZoom: 1,
   },
+  fullWidth: false,
 }
 
 export const DEFAULT_ANNOTATION_LENS_OPTIONS = {
@@ -59,4 +60,5 @@ export const DEFAULT_ANNOTATION_LENS_OPTIONS = {
     strokeWidth: 1,
     listening: false,
   },
+  fullWidth: false,
 }

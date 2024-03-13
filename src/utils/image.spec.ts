@@ -24,6 +24,7 @@ describe('image', () => {
       const actual = computeImageBoundingBox(
         htmlDivElement as HTMLDivElement,
         htmlImageElement as HTMLImageElement,
+        false,
       )
 
       expect(actual).to.deep.equal(expected)

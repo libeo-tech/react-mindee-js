@@ -15,6 +15,7 @@ export type Orientation = 0 | 90 | 180 | 270
 
 export type BaseOptions = {
   shapeConfig?: LineConfig
+  fullWidth?: boolean
 }
 
 export type AnnotationLayers = {
