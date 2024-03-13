@@ -35,7 +35,7 @@ export declare const DEFAULT_ANNOTATION_VIEWER_OPTIONS: {
         max: number;
         defaultZoom: number;
     };
-    fullWidth: boolean;
+    isFullWidth: boolean;
 };
 export declare const DEFAULT_ANNOTATION_LENS_OPTIONS: {
     shapeConfig: {
@@ -43,5 +43,5 @@ export declare const DEFAULT_ANNOTATION_LENS_OPTIONS: {
         strokeWidth: number;
         listening: boolean;
     };
-    fullWidth: boolean;
+    isFullWidth: boolean;
 };

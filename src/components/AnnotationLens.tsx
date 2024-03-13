@@ -132,7 +132,7 @@ export default function AnnotationLens({
       stageObject.current,
       containerRef.current,
       imageDataObject.current,
-      options.fullWidth ?? false,
+      options.isFullWidth ?? false,
     )
     if (imageBoundingBox) {
       imageBoundingBoxObject.current = imageBoundingBox

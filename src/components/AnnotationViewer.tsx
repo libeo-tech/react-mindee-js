@@ -227,7 +227,7 @@ export default function AnnotationViewer({
       stageObject.current,
       containerRef.current,
       imageDataObject.current,
-      options.fullWidth,
+      options.isFullWidth,
     )
     if (imageBoundingBox) {
       imageBoundingBoxObject.current = imageBoundingBox

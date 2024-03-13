@@ -11,7 +11,7 @@ export type AnnotationShape<T = any> = T & {
 export type Orientation = 0 | 90 | 180 | 270;
 export type BaseOptions = {
     shapeConfig?: LineConfig;
-    fullWidth?: boolean;
+    isFullWidth?: boolean;
 };
 export type AnnotationLayers = {
     shapes: Konva.Layer;
@@ -29,6 +29,7 @@ export type AnnotationViewerOptions = BaseOptions & {
         max: number;
         defaultZoom: number;
     };
+    isFullWidth?: boolean;
 };
 export type ImageBoundingBox = {
     x: number;

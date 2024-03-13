@@ -84,7 +84,7 @@ export const heicToJpg = async (blob: Blob) => {
 export const computeImageBoundingBox = (
   { clientWidth, clientHeight }: HTMLDivElement,
   imageObj: HTMLImageElement,
-  fullWidth: boolean,
+  isFullWidth: boolean,
 ) => {
   const imageAspectRatio = imageObj.width / imageObj.height
   const canvasAspectRatio = clientWidth / clientHeight
@@ -95,13 +95,27 @@ export const computeImageBoundingBox = (
   renderableHeight = clientHeight
   renderableWidth = clientWidth
 
-  if (fullWidth) {
+  console.log('JGROUD computeImageBoundingBox', {
+    imageWidth: imageObj.width,
+    imageHeight: imageObj.height,
+    imageAspectRatio,
+    clientWidth,
+    clientHeight,
+    canvasAspectRatio,
+  })
+
+  if (isFullWidth) {
+    console.log('JGROUD Final size', {
+      scale: Number(Number(renderableWidth / imageObj.width).toFixed(3)),
+      width: Math.round(clientWidth),
+      height: Math.round(clientWidth / imageAspectRatio),
+    })
     return {
       scale: Number(Number(renderableWidth / imageObj.width).toFixed(3)),
-      x: 0,
-      y: 0,
+      x: xStart,
+      y: yStart,
       width: Math.round(clientWidth),
-      height: Math.round(clientWidth * imageAspectRatio),
+      height: Math.round(clientWidth / imageAspectRatio),
     }
   } else {
     if (imageAspectRatio < canvasAspectRatio) {
@@ -123,6 +137,10 @@ export const computeImageBoundingBox = (
 }
 
 const resizeStage = (stage: Konva.Stage, container: HTMLDivElement) => {
+  console.log('JGROUD resizeStage', {
+    width: container.clientWidth,
+    height: container.clientHeight,
+  })
   stage.width(container.clientWidth)
   stage.height(container.clientHeight)
 }
@@ -131,7 +149,7 @@ export const handleResizeImage = (
   stage: Konva.Stage | null,
   container: HTMLDivElement | null,
   { element, shape }: ImageData,
-  fullWidth: boolean,
+  isFullWidth: boolean,
 ) => {
   if (!container || !stage) {
     return
@@ -140,7 +158,7 @@ export const handleResizeImage = (
   const imageBoundingBox = computeImageBoundingBox(
     container,
     element,
-    fullWidth,
+    isFullWidth,
   )
   const { x, y, width, height, scale } = imageBoundingBox
   stage?.scale({
@@ -182,6 +200,13 @@ export const setStageBasedImagePosition = ({
   ) {
     stageY = newStageY
   }
+  console.log('JGROUD setStageBasedImagePosition', {
+    width: stage.width(),
+    height: stage.height(),
+    zoomScale,
+    stageX,
+    stageY,
+  })
   stage.position({
     x: stageX,
     y: stageY,
